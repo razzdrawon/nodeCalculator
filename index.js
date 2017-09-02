@@ -11,20 +11,25 @@ app.use(bodyParser.json())
 
 app.get('/api/:operando1/:operador/:operando2', function(req, res) {
 
+    var operando1 = parseFloat(req.params.operando1)
+    var operando2 = parseFloat(req.params.operando2)
+    var operador = req.params.operador
+
+
     var resultado = ""
-    if(req.params.operando1 && req.params.operando2 && req.params.operador) {
-        switch (req.params.operador){
+    if(operando1 && operando2 && operador) {
+        switch (operador){
             case "+":
-                resultado += parseFloat(parseFloat(req.params.operando1) + parseFloat(req.params.operando2))
+                resultado += parseFloat(operando1 + operando2)
                 break
             case "-":
-                resultado += parseFloat(req.params.operando1 - req.params.operando2)
+                resultado += parseFloat(operando1 - operando2)
                 break
             case "x":
-                resultado += parseFloat(req.params.operando1 * req.params.operando2)
+                resultado += parseFloat(operando1 * operando2)
                 break
             case "/":
-                resultado += parseFloat(req.params.operando1 / req.params.operando2)
+                resultado += parseFloat(operando1 / operando2)
                 break
         }
     }
