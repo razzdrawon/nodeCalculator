@@ -11,8 +11,7 @@ app.use(bodyParser.json())
 
 app.get('/api/:operando1/:operador/:operando2', function(req, res) {
 
-    var resultado = "Resultado:   "
-
+    var resultado = ""
     if(req.params.operando1 && req.params.operando2 && req.params.operador) {
         switch (req.params.operador){
             case "+":
@@ -32,21 +31,7 @@ app.get('/api/:operando1/:operador/:operando2', function(req, res) {
 
     res.status(200).send(
         {
-            message: resultado,
-            array: [
-                {
-                    param1: 1,
-                    param2: 2
-                },
-                {
-                    param1: 3,
-                    param2: 4
-                },
-                {
-                    param1: 5,
-                    param2: 6
-                }
-            ]
+            resultado: resultado,
         }
     )
 })
